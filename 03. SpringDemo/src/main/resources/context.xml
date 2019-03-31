@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="proxy" class="RendererDefaultProxyImpl">
+        <property name="renderer" ref="renderer"/>
+    </bean>
+
+    <bean id="renderer" class="MessagesRendererStandardImpl">
+        <constructor-arg name="message" ref="message"/>
+    </bean>
+
+    <bean id="message" class="MessageSuffixImpl">
+        <constructor-arg name="suffix" value="FROM SPRING SUFFIX"/>
+        <property name="text" value="TEXT FROM SPRING"/>
+    </bean>
+</beans>
